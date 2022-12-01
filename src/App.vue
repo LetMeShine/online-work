@@ -1,8 +1,7 @@
 <template>
     <div>
-        <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
-        <!-- <router-view /> -->
-        <NavBottom />
+        <router-view />
+        <!-- <NavBottom /> -->
     </div>
 </template>
 
@@ -10,7 +9,7 @@
 import { defineComponent } from "@vue/runtime-core"; // 让组件在类型推断更加友好
 import { reactive, toRefs } from "@vue/reactivity";
 // import { Options, Vue } from "vue-class-component";
-import NavBottom from "./views/NavBottom.vue";
+// import NavBottom from "./views/NavBottom.vue";
 
 // @Options({
 //     components: {
@@ -26,10 +25,11 @@ import NavBottom from "./views/NavBottom.vue";
 // }
 export default defineComponent({
     components: {
-        NavBottom,
+        // NavBottom,
     },
     setup() {
         const state = reactive({});
+
         return {
             ...toRefs(state),
         };
@@ -44,6 +44,6 @@ export default defineComponent({
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
+    /* margin-top: 60px; */
 }
 </style>
