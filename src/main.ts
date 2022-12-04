@@ -12,6 +12,9 @@ import 'element-plus/dist/index.css'
 // 图标引入
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
+// 公共样式引入
+import '@/assets/css/common.css'
+
 const app = createApp(App);
 // 注册全局公共组件组件
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {

@@ -1,8 +1,14 @@
 <template>
     <div class="banner">
-        <img v-for="(v, i) in items" :key="i" :src="v" v-show="i === n" />
+        <img
+            class="border4px banner-img"
+            v-for="(v, i) in items"
+            :key="i"
+            :src="v"
+            v-show="i === n"
+        />
         <div class="banner-circle">
-            <ul>
+            <ul class="circle-container">
                 <li
                     :class="i === n ? 'selected' : ''"
                     v-for="(item, i) in items"
@@ -35,7 +41,7 @@ export default {
                 } else {
                     state.n = 0;
                 }
-            }, 2000);
+            }, 3000);
         };
         // 鼠标移上去 停止轮播
         const stopAuto = (i) => {
@@ -64,3 +70,37 @@ export default {
     },
 };
 </script>
+
+<style scoped lang="less">
+.banner {
+    position: relative;
+    width: 100%;
+    .banner-img {
+        // width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    .banner-circle {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        .circle-container {
+            margin-left: -50%;
+            display: flex;
+            cursor: pointer;
+            li {
+                list-style: none;
+                // 子元素的设置固定宽度px这些，这样才能撑开父元素
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                margin-right: 8px;
+                background-color: #ccc;
+                &.selected {
+                    background-color: red;
+                }
+            }
+        }
+    }
+}
+</style>
