@@ -42,6 +42,29 @@
                         }}</span>
                     </p>
                 </div>
+                <!-- 最新评论 -->
+                <div class="comment border4px">
+                    <h5 class="comment-title">最新评论</h5>
+                    <div
+                        class="comment-info"
+                        v-for="(comment, index) in commentList"
+                        :key="index"
+                    >
+                        <img
+                            class="comment-info-avatar"
+                            :src="comment.avatar"
+                        />
+                        <div class="comment-info-right">
+                            <div class="comment-info-right-name">
+                                {{ comment.name
+                                }}{{ comment.commentTime }}前说：
+                            </div>
+                            <div class="comment-info-right-content">
+                                {{ comment.commentContent }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -88,6 +111,56 @@ export default {
                     content: "平台上线了",
                 },
             ],
+            commentList: [
+                {
+                    avatar: "https://t10.baidu.com/it/u=2292095202,1784829557&fm=58",
+                    name: "angela",
+                    commentTime: "秒、m,s,d,w,M,y",
+                    commentContent: "评论内容",
+                },
+                {
+                    avatar: "https://t14.baidu.com/it/u=1270036662,2724914425&fm=58&app=83&size=w931&n=0&f=JPEG&fmt=auto&maxorilen2heic=2000000",
+                    name: "孤芳不自",
+                    commentTime: "秒、m,s,d,w,M,y",
+                    commentContent: "评论内容",
+                },
+                {
+                    avatar: "https://t10.baidu.com/it/u=2292095202,1784829557&fm=58",
+                    name: "angela",
+                    commentTime: "秒、m,s,d,w,M,y",
+                    commentContent: "评论内容",
+                },
+                {
+                    avatar: "https://t14.baidu.com/it/u=1270036662,2724914425&fm=58&app=83&size=w931&n=0&f=JPEG&fmt=auto&maxorilen2heic=2000000",
+                    name: "孤芳不自",
+                    commentTime: "秒、m,s,d,w,M,y",
+                    commentContent: "评论内容",
+                },
+                {
+                    avatar: "https://t10.baidu.com/it/u=2292095202,1784829557&fm=58",
+                    name: "angela",
+                    commentTime: "秒、m,s,d,w,M,y",
+                    commentContent: "评论内容",
+                },
+                {
+                    avatar: "https://t14.baidu.com/it/u=1270036662,2724914425&fm=58&app=83&size=w931&n=0&f=JPEG&fmt=auto&maxorilen2heic=2000000",
+                    name: "孤芳不自",
+                    commentTime: "秒、m,s,d,w,M,y",
+                    commentContent: "评论内容",
+                },
+                {
+                    avatar: "https://t10.baidu.com/it/u=2292095202,1784829557&fm=58",
+                    name: "angela",
+                    commentTime: "秒、m,s,d,w,M,y",
+                    commentContent: "评论内容",
+                },
+                {
+                    avatar: "https://t14.baidu.com/it/u=1270036662,2724914425&fm=58&app=83&size=w931&n=0&f=JPEG&fmt=auto&maxorilen2heic=2000000",
+                    name: "孤芳不自",
+                    commentTime: "秒、m,s,d,w,M,y",
+                    commentContent: "评论内容",
+                },
+            ],
         });
         return state;
     },
@@ -130,6 +203,44 @@ export default {
                             cursor: pointer;
                             text-decoration: underline;
                             color: rgb(247, 101, 101);
+                        }
+                    }
+                }
+            }
+            .comment {
+                width: 300px;
+                padding: 12px;
+                margin-bottom: 16px;
+                background-color: #fff;
+                &-title {
+                    margin: 0 0 16px 0;
+                }
+                &-info {
+                    width: 100%;
+                    height: 50px;
+                    display: flex;
+                    border-bottom: 1px solid #ccc;
+                    margin-bottom: 8px;
+                    font-size: 14px;
+                    &-avatar {
+                        height: 48px;
+                        width: 48px;
+                        border-radius: 50%;
+                        margin-right: 12px;
+                    }
+                    &-right {
+                        font-size: 12px;
+                        &-name {
+                            font-weight: 700;
+                            line-height: 24px;
+                        }
+                        &-content {
+                            color: #ccc;
+                            &:hover {
+                                cursor: pointer;
+                                text-decoration: underline;
+                                color: rgb(247, 101, 101);
+                            }
                         }
                     }
                 }
