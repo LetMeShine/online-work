@@ -1,8 +1,8 @@
 <template>
-    <div>
-        <router-view />
-        <!-- <NavBottom /> -->
-    </div>
+    <!-- <div> -->
+    <router-view />
+    <!-- <NavBottom /> -->
+    <!-- </div> -->
 </template>
 
 <script lang="ts">
@@ -38,6 +38,12 @@ export default defineComponent({
 </script>
 
 <style>
+html,
+body,
+#app {
+    width: 100%;
+    height: 100%;
+}
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;

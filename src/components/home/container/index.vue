@@ -7,6 +7,8 @@
             <div class="letf-container">
                 <!-- 轮播图 -->
                 <Banner :imgs="imgs" />
+                <el-button @click="setArr">点击</el-button>
+                <p>{{ testArr[0] }}</p>
             </div>
             <!-- 右侧 -->
             <div class="right-container">
@@ -76,7 +78,7 @@
 </template>
 <script>
 // 响应式
-import { reactive } from "@vue/reactivity";
+import { reactive, toRefs } from "@vue/reactivity";
 // 导航栏
 import Header from "../views/header.vue";
 export default {
@@ -85,6 +87,7 @@ export default {
     },
     setup() {
         let state = reactive({
+            testArr: [1, 2],
             imgs: [
                 require("@/assets/img/1.jpg"),
                 require("@/assets/img/2.jpg"),
@@ -162,7 +165,10 @@ export default {
                 },
             ],
         });
-        return state;
+        const setArr = () => {
+            state.testArr[0] = "hhhhh";
+        };
+        return { ...toRefs(state), setArr };
     },
 };
 </script>

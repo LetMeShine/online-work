@@ -1,20 +1,25 @@
 import routerData from '@/utils/routerData'
 // vue-router 4.0以上
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Home from '@/components/home/container/index.vue'
+// import Home from '@/components/home/container/index.vue'
 
 const routes = [
     {
         path: '/',
         redirect: '/home',
-        name: 'Home',
-        component: Home
+        // name: 'Home',
+        // component: Home
     },
     {
         path: '/home',
         // redirect: '/home',
         name: 'Home',
         component: () => import('@/components/home/container/index.vue')
+    },
+    {
+        path: '/work-step',
+        name: 'WorkStep',
+        component: () => import('@/components/work-step/container/index.vue')
     },
 ]
 routerData.forEach(item => {
