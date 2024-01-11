@@ -21,6 +21,11 @@ const routes = [
         name: 'WorkStep',
         component: () => import('@/components/work-step/container/index.vue')
     },
+    {
+        path: '/login',
+        name: 'login',
+        component: () => import('@/components/login/container/index.vue')
+    },
 ]
 routerData.forEach(item => {
     // 此处push进去的格式需要和原先的字段（前面静态的路由）保持一致
