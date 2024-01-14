@@ -1,36 +1,29 @@
 <template>
-    <div class="login-container">
-        <el-form
-            ref="ruleFormRef"
-            :model="ruleForm"
-            :rules="rules"
-            label-width="120px"
-            class="demo-ruleForm"
-            :size="formSize"
-            status-icon
-        >
-            <el-form-item label="用户名" prop="name">
-                <el-input v-model="ruleForm.name" />
-            </el-form-item>
-            <el-form-item label="密码" prop="password">
-                <el-input v-model="ruleForm.password" />
-            </el-form-item>
-            <el-form-item label="验证码" prop="Code">
-                <el-input v-model="ruleForm.code" />
-                <canvas
-                    @click="drawCaptcha()"
-                    id="captchaCanvas"
-                    width="100"
-                    height="40"
-                ></canvas>
-            </el-form-item>
-            <el-form-item>
-                <el-button type="primary" @click="submitForm(ruleFormRef)">
-                    登录
-                </el-button>
-            </el-form-item>
-        </el-form>
-    </div>
+  <div class="login-container">
+    <el-form
+      ref="ruleFormRef"
+      :model="ruleForm"
+      :rules="rules"
+      label-width="120px"
+      class="demo-ruleForm"
+      :size="formSize"
+      status-icon
+    >
+      <el-form-item label="用户名" prop="name">
+        <el-input v-model="ruleForm.name"/>
+      </el-form-item>
+      <el-form-item label="密码" prop="password">
+        <el-input v-model="ruleForm.password"/>
+      </el-form-item>
+      <el-form-item label="验证码" prop="code">
+        <el-input class="code" v-model="ruleForm.code"/>
+        <canvas @click="drawCaptcha()" id="captchaCanvas" width="100" height="40"></canvas>
+      </el-form-item>
+      <el-form-item>
+        <el-button style="width: 100%" type="primary" @click="submitForm(ruleFormRef)">登录</el-button>
+      </el-form-item>
+    </el-form>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -198,30 +191,13 @@ nextTick().then(() => {
 
 <style scoped lang="less">
 .login-container {
-    width: 400px;
-    height: 100%;
-    .node-container {
-        display: flex;
-        .node-name {
-            margin: 10px 12px;
-            p {
-                border: 2px solid green;
-                border-radius: 8px;
-                padding: 4px 12px;
-                cursor: pointer;
-                &:hover {
-                    color: green;
-                    background-color: rgb(223, 247, 225);
-                }
-            }
-            .active {
-                color: green;
-                background-color: rgb(223, 247, 225);
-            }
-        }
+  width: 400px;
+  height: 100%;
+  .demo-ruleForm {
+    .code {
+        width: 60%;
+        margin-right: 2%;
     }
-    .node-info-contianer {
-        height: calc(100% - 52px);
-    }
+  }
 }
 </style>

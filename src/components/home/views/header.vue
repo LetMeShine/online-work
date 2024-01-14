@@ -8,8 +8,9 @@
                 mode="horizontal"
                 @select="handleSelect"
             >
-                <template v-for="menu in menuList" :key="menu.menuCode">
+                <template v-for="menu in menuList" >
                     <el-sub-menu
+                        :key="menu.menuCode"
                         :index="menu.menuCode"
                         v-if="
                             Array.isArray(menu.subMenuList) &&
@@ -24,7 +25,7 @@
                             >{{ subMenu.menuName }}</el-menu-item
                         >
                     </el-sub-menu>
-                    <el-menu-item v-else :index="menu.menuCode"
+                    <el-menu-item v-else :index="menu.menuCode" :key="menu.menuCode"
                         ><el-icon v-if="menu.icon == 'folder'"
                             ><Folder
                         /></el-icon>
