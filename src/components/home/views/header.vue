@@ -8,7 +8,7 @@
                 mode="horizontal"
                 @select="handleSelect"
             >
-                <template v-for="menu in menuList" >
+                <template v-for="menu in menuList">
                     <el-sub-menu
                         :key="menu.menuCode"
                         :index="menu.menuCode"
@@ -25,7 +25,10 @@
                             >{{ subMenu.menuName }}</el-menu-item
                         >
                     </el-sub-menu>
-                    <el-menu-item v-else :index="menu.menuCode" :key="menu.menuCode"
+                    <el-menu-item
+                        v-else
+                        :index="menu.menuCode"
+                        :key="menu.menuCode"
                         ><el-icon v-if="menu.icon == 'folder'"
                             ><Folder
                         /></el-icon>
@@ -36,12 +39,33 @@
                 </template>
             </el-menu>
         </div>
-        <div class="user">个人中心</div>
+        <div class="user">
+            <el-dropdown @command="commandItem" trigger="click">
+                <span class="el-dropdown-link">
+                    个人中心<el-icon class="el-icon--right"
+                        ><arrow-down
+                    /></el-icon>
+                </span>
+                <template #dropdown>
+                    <el-dropdown-menu>
+                        <el-dropdown-item :icon="SwitchButton" command="1"
+                            >退出系统</el-dropdown-item
+                        >
+                    </el-dropdown-menu>
+                </template>
+            </el-dropdown>
+        </div>
     </div>
 </template>
 <script lang="ts">
 import { defineComponent } from "@vue/runtime-core"; // 让组件在类型推断更加友好
 import { reactive, toRefs } from "@vue/reactivity";
+// 图标
+import { User, SwitchButton } from "@element-plus/icons-vue";
+// 对话框
+import { ElMessageBox } from "element-plus";
+// 路由
+import { useRouter } from "vue-router";
 
 export default defineComponent({
     components: {
@@ -79,10 +103,32 @@ export default defineComponent({
                     icon: "search",
                 },
             ],
+            User,
+            SwitchButton,
         });
+        const router = useRouter();
+
+        const commandItem = (item: any) => {
+            if (item == "1") {
+                // 二次确认框
+                ElMessageBox.confirm("您确定退出系统？", "确定", {
+                    confirmButtonText: "确定",
+                    cancelButtonText: "取消",
+                    type: "warning",
+                })
+                    .then(() => {
+                        console.log("退出、调用接口 TODO");
+                        router.push("/login");
+                    })
+                    .catch(() => {
+                        // catch error
+                    });
+            }
+        };
 
         return {
             ...toRefs(state),
+            commandItem,
         };
     },
 });
