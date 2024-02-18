@@ -1,9 +1,9 @@
 import routerData from '@/utils/routerData'
 // vue-router 4.0以上
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 // import Home from '@/components/home/container/index.vue'
 
-const routes = [
+const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
         redirect: '/home',
